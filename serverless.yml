@@ -1,0 +1,34 @@
+org: 0xknon
+app: bandai-cron
+service: bandai-cron
+frameworkVersion: '3'
+
+provider:
+  name: aws
+  region: ap-northeast-1
+  runtime: nodejs18.x
+  
+plugins:
+  - serverless-plugin-typescript
+
+functions:
+  auto-apply:
+    handler: src/functions/handlers.autoApply
+    timeout: 600 
+    events:
+      - schedule: rate(12 hours)
+  report:
+    handler: src/functions/handlers.report
+    timeout: 600 
+    events:
+      - schedule: rate(12 hours)
+  # rateHandler:
+  #   handler: index.run
+  #   events:
+  #     # Invoke Lambda function every minute
+  #     - schedule: rate(1 minute)
+  # cronHandler:
+  #   handler: index.run
+  #   events:
+  #     # Invoke Lambda function every 2nd minute from Mon-Fri
+  #     - schedule: cron(0/2 * ? * MON-FRI *)
