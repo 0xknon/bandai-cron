@@ -16,7 +16,42 @@ functions:
     handler: src/functions/handlers.autoApply
     timeout: 600 
     events:
-      - schedule: rate(12 hours)
+      - schedule:
+          rate: rate(12 hours)
+          input:
+            email: ykn121@gmail.com
+      - schedule:
+          rate: rate(12 hours)
+          input:
+            email: kwanmatthew20@gmail.com
+      - schedule:
+          rate: rate(12 hours)
+          input:
+            email: yumatthew497@gmail.com
+      - schedule:
+          rate: rate(12 hours)
+          input:
+            email: nokmatthew78@gmail.com
+      - schedule:
+          rate: rate(12 hours)
+          input:
+            email: milkyu92@gmail.com
+      - schedule:
+          rate: rate(12 hours)
+          input:
+            email: milkkwan880@gmail.com
+      - schedule:
+          rate: rate(12 hours)
+          input:
+            email: milknok4@gmail.com
+      - schedule:
+          rate: rate(12 hours)
+          input:
+            email: pigyu349@gmail.com
+      - schedule:
+          rate: rate(12 hours)
+          input:
+            email: pigkwan881@gmail.com
   report:
     handler: src/functions/handlers.report
     timeout: 600 

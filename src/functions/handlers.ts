@@ -2,20 +2,27 @@ import { BandaiWorker } from "src/utils";
 import { tokenMap } from "src/constants";
 
 export const autoApply = async (event, context) => {
-  for (let email in tokenMap) {
-    const current = new BandaiWorker(tokenMap[email]);
-    const ids = (await current.getParams()).map(({ event_series_id }) => event_series_id);
+  const { email } = event;
+  const current = new BandaiWorker(tokenMap[email]);
+  const ids = (await current.getParams()).map(({ event_series_id }) => event_series_id);
 
-    const eventIds = (await current.fetchCompetitionList(ids)).map(({ id }) => id);
-    console.log("================================");
-    console.log("Event IDs", eventIds);
-    console.log("================================");
-    for (let i = 0; i < eventIds.length; i++) {
-      console.log(`Applying for ${eventIds[i]}...`);
-      await current.apply(eventIds[i]);
+  const events = await current.fetchCompetitionList(ids);
+  const success: any[] = [];
+  const failed: any[] = [];
+  for (let i = 0; i < events.length; i++) {
+    const result = await current.apply(events[i].id);
+    if (result) {
+      success.push(events[i]);
+    } else {
+      failed.push(events[i]);
     }
   }
+  console.log(email, {
+    success,
+    failed,
+  });
 };
+
 export const report = async (event, context) => {
   for (let email in tokenMap) {
     const current = new BandaiWorker(tokenMap[email]);

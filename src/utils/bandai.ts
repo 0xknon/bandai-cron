@@ -48,9 +48,9 @@ export class BandaiWorker {
         pref_code_for_add_points: null,
         questionnaire_items: [],
       });
+      return true;
     } catch (error) {
-      console.log(`Failed for ${eventId}`);
-      console.log(error);
+      return false;
     }
   };
 
