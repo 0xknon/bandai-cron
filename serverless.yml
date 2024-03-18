@@ -17,46 +17,46 @@ functions:
     timeout: 600 
     events:
       - schedule:
-          rate: rate(12 hours)
+          rate: cron(0 0 ? * * *)
           input:
             email: ykn121@gmail.com
       - schedule:
-          rate: rate(12 hours)
+          rate: cron(0 0 ? * * *)
           input:
             email: kwanmatthew20@gmail.com
       - schedule:
-          rate: rate(12 hours)
+          rate: cron(0 0 ? * * *)
           input:
             email: yumatthew497@gmail.com
       - schedule:
-          rate: rate(12 hours)
+          rate: cron(0 0 ? * * *)
           input:
             email: nokmatthew78@gmail.com
       - schedule:
-          rate: rate(12 hours)
+          rate: cron(0 0 ? * * *)
           input:
             email: milkyu92@gmail.com
       - schedule:
-          rate: rate(12 hours)
+          rate: cron(0 0 ? * * *)
           input:
             email: milkkwan880@gmail.com
       - schedule:
-          rate: rate(12 hours)
+          rate: cron(0 0 ? * * *)
           input:
             email: milknok4@gmail.com
       - schedule:
-          rate: rate(12 hours)
+          rate: cron(0 0 ? * * *)
           input:
             email: pigyu349@gmail.com
       - schedule:
-          rate: rate(12 hours)
+          rate: cron(0 0 ? * * *)
           input:
             email: pigkwan881@gmail.com
   report:
     handler: src/functions/handlers.report
     timeout: 600 
     events:
-      - schedule: rate(12 hours)
+      - schedule: cron(0 0 ? * * *)
   # rateHandler:
   #   handler: index.run
   #   events:
@@ -66,4 +66,4 @@ functions:
   #   handler: index.run
   #   events:
   #     # Invoke Lambda function every 2nd minute from Mon-Fri
-  #     - schedule: cron(0/2 * ? * MON-FRI *)
+  #     - schedule: cron(0 0 ? * * *)

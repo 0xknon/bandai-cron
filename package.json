@@ -5,13 +5,15 @@
   "author": "",
   "license": "MIT",
   "scripts": {
-    "deploy": "sls deploy"
+    "sls:login": "sls login",
+    "sls:deploy": "sls deploy"
   },
   "devDependencies": {
     "serverless-plugin-typescript": "^2.1.5",
     "typescript": "^5.4.2"
   },
   "dependencies": {
-    "axios": "^1.6.7"
+    "axios": "^1.6.7",
+    "serverless": "^3.38.0"
   }
 }

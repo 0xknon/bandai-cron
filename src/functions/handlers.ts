@@ -11,10 +11,17 @@ export const autoApply = async (event, context) => {
   const failed: any[] = [];
   for (let i = 0; i < events.length; i++) {
     const result = await current.apply(events[i].id);
+    const { event_series_title, organizer_name, start_datetime, street_address } = events[i];
+    const event = {
+      event: event_series_title,
+      shop: organizer_name,
+      address: street_address,
+      date: start_datetime,
+    };
     if (result) {
-      success.push(events[i]);
+      success.push(event);
     } else {
-      failed.push(events[i]);
+      failed.push(event);
     }
   }
   console.log(email, {
@@ -27,15 +34,19 @@ export const report = async (event, context) => {
   for (let email in tokenMap) {
     const current = new BandaiWorker(tokenMap[email]);
     console.log("================================");
-    console.log("Email: ", email);
     try {
+      const successfullEvents: any[] = [];
       const { data } = await current.report();
-      (data.success.events as any[]).forEach(({ start_datetime, organizer_name, team_status_id }) => {
+      (data.success.events as any[]).forEach(({ start_datetime, organizer_name, street_address, team_status_id }) => {
         if (team_status_id === 2) {
-          console.log(`Name: ${organizer_name}`);
-          console.log(`Date: ${start_datetime}`);
+          successfullEvents.push({
+            name: organizer_name,
+            address: street_address,
+            date: start_datetime,
+          });
         }
       });
+      console.log(email, successfullEvents);
     } catch (error) {
       console.log(`Failed to report ${email}...`);
     }

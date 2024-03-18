@@ -16,7 +16,9 @@ export class BandaiWorker {
   getParams = async () => {
     const { data } = await this.client.get("/user/event/list/params");
 
-    return data.success.event_series_with_game_title_id.filter(({ event_series_title }) => event_series_title.includes("旗艦戰"));
+    return data.success.event_series_with_game_title_id.filter(
+      ({ event_series_title }) => event_series_title.includes("旗艦戰") || event_series_title.includes("現開賽")
+    );
   };
 
   fetchCompetitionList = async (ids: number[]) => {
