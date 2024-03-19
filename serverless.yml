@@ -52,6 +52,11 @@ functions:
           rate: cron(0 0 ? * * *)
           input:
             email: pigkwan881@gmail.com
+      - schedule:
+          rate: cron(0 0 ? * * *)
+          input:
+            email: pignok89@gmail.com
+
   report:
     handler: src/functions/handlers.report
     timeout: 600 
