@@ -23,6 +23,10 @@ functions:
       - schedule:
           rate: cron(0 0 ? * * *)
           input:
+            email: knyutcg@gmail.com
+      - schedule:
+          rate: cron(0 0 ? * * *)
+          input:
             email: kwanmatthew20@gmail.com
       - schedule:
           rate: cron(0 0 ? * * *)
