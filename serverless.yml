@@ -60,6 +60,10 @@ functions:
           rate: cron(0 0 ? * * *)
           input:
             email: pignok89@gmail.com
+      - schedule:
+          rate: cron(0 0 ? * * *)
+          input:
+            email: dakotachan610@gmail.com
 
   report:
     handler: src/functions/handlers.report
