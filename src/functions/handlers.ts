@@ -37,9 +37,10 @@ export const report = async (event, context) => {
     try {
       const successfullEvents: any[] = [];
       const { data } = await current.report();
-      (data.success.events as any[]).forEach(({ start_datetime, organizer_name, street_address, team_status_id }) => {
+      (data.success.events as any[]).forEach(({ start_datetime, organizer_name, street_address, team_status_id, event_series_title }) => {
         if (team_status_id === 2) {
           successfullEvents.push({
+            event: event_series_title,
             name: organizer_name,
             address: street_address,
             date: start_datetime,
