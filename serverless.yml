@@ -1,75 +1,45 @@
 org: 0xknon
-app: bandai-cron
-service: bandai-cron
-frameworkVersion: '3'
+app: knyu-serverless
+service: knyu-serverless
+frameworkVersion: "3"
 
 provider:
   name: aws
-  region: ap-northeast-1
+  region: ap-southeast-1
   runtime: nodejs18.x
-  
+
 plugins:
   - serverless-plugin-typescript
+  - serverless-dotenv-plugin
+  # - serverless-bundle
+  - serverless-plugin-optimize
+  - serverless-offline
 
 functions:
-  auto-apply:
-    handler: src/functions/handlers.autoApply
-    timeout: 600 
+  aavegotchi-pet:
+    handler: src/functions/web3/handlers.autoPet
+    timeout: 600
     events:
       - schedule:
-          rate: cron(0 0 ? * * *)
-          input:
-            email: ykn121@gmail.com
-      - schedule:
-          rate: cron(0 0 ? * * *)
-          input:
-            email: knyutcg@gmail.com
-      - schedule:
-          rate: cron(0 0 ? * * *)
-          input:
-            email: kwanmatthew20@gmail.com
-      - schedule:
-          rate: cron(0 0 ? * * *)
-          input:
-            email: yumatthew497@gmail.com
-      - schedule:
-          rate: cron(0 0 ? * * *)
-          input:
-            email: nokmatthew78@gmail.com
-      - schedule:
-          rate: cron(0 0 ? * * *)
-          input:
-            email: milkyu92@gmail.com
-      - schedule:
-          rate: cron(0 0 ? * * *)
-          input:
-            email: milkkwan880@gmail.com
-      - schedule:
-          rate: cron(0 0 ? * * *)
-          input:
-            email: milknok4@gmail.com
-      - schedule:
-          rate: cron(0 0 ? * * *)
-          input:
-            email: pigyu349@gmail.com
-      - schedule:
-          rate: cron(0 0 ? * * *)
-          input:
-            email: pigkwan881@gmail.com
-      - schedule:
-          rate: cron(0 0 ? * * *)
-          input:
-            email: pignok89@gmail.com
-      - schedule:
-          rate: cron(0 0 ? * * *)
-          input:
-            email: dakotachan610@gmail.com
+          rate: rate(45 minutes)
+  # auto-apply:
+  #   handler: src/functions/handlers.autoApply
+  #   timeout: 600
+  #   events:
+  #     - schedule:
+  #         rate: cron(0 0 ? * * *)
+  #         input:
+  #           email: ykn121@gmail.com
+  #     - schedule:
+  #         rate: cron(0 0 ? * * *)
+  #         input:
+  #           email: knyutcg@gmail.com
 
-  report:
-    handler: src/functions/handlers.report
-    timeout: 600 
-    events:
-      - schedule: cron(0 0 ? * * *)
+  # report:
+  #   handler: src/functions/handlers.report
+  #   timeout: 600
+  #   events:
+  #     - schedule: cron(0 0 ? * * *)
   # rateHandler:
   #   handler: index.run
   #   events:

@@ -1,5 +1,5 @@
 {
-  "name": "bandai-cron",
+  "name": "knyu-serverless",
   "version": "1.0.0",
   "description": "Example of creating a function that runs as a cron job using the serverless `schedule` event",
   "author": "",
@@ -9,11 +9,16 @@
     "sls:deploy": "sls deploy"
   },
   "devDependencies": {
+    "serverless-dotenv-plugin": "^6.0.0",
+    "serverless-offline": "^13.8.0",
+    "serverless-plugin-optimize": "^4.2.1-rc.1",
     "serverless-plugin-typescript": "^2.1.5",
     "typescript": "^5.4.2"
   },
   "dependencies": {
     "axios": "^1.6.7",
+    "dotenv": "^16.4.5",
+    "ethers": "^6.13.2",
     "serverless": "^3.38.0"
   }
 }
